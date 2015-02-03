@@ -1,4 +1,3 @@
-
 IMPORTANT PUBLIC SERVICE ANNOUNCEMENT:
 
 This has recently been ugpraded to use the CUDA 5.5 toolkit.
@@ -7,3 +6,43 @@ If you keep using CUDA 5.0, you will not see the amazing 30%
 speed gains with David Andersen's new Kepler, Titan kernels.
 
 Also see README.txt
+--
+CudaMiner forked from https://github.com/cbuchner1/CudaMiner
+--
+
+I built CUDAMINER for OSX using GCC NOT Clang.  The reason for this is that Clang doesn't seem to support something that's in the NVIDIA CUDA libraries.  Something mathematical that I can't remember and didn't write down.
+
+The commands:
+
+./autogen.sh 
+CFLAGS="-Wa,-q" ./configure --with-cuda=/Developer/NVIDIA/CUDA-5.5
+make -j 16
+
+Dependencies:
+
+1. NVIDIA CUDA libraries, version 5.5 - I tried it with 6.0 but it didn't seem to make any odds to the performance
+2. OpenSSL 
+3. CURL with SSL - I built it from scratch, along with OpenSSL using my GCC install
+4. Autoconf, automake, m4
+
+Things that I did:
+
+1. CFLAGS="-Wa,-q" added to the configure command to ensure that we can use assembler and hopefully get a quicker binary
+2. 
+
+Problems that I solved:
+
+1. <malloc.h> should be <malloc/malloc.h>
+2. NVCC doesn't accept the CFLAGS "-Wa,-q" which you need to send to GCC so that is passes through assembler commands to Clang.  Clang needs to deal with the assembler as GAS (the GCC Assembler) isn't supported on OSX.
+3. Looks for CUDA libs in lib64 subdirectory of the NVIDA CUDA install.  However, there is no lib64 subdirectory on OSX.
+4. Some problem with the NVML wrapper on OSX necessitated the removal of those files altogether.
+5. 
+
+Problems that I introduced:
+
+1. You can't specificy CFLAGS that are intended for NVCC, these will be ignored (so that the assembler pass through commands work)
+2. I have built in the NVIDIA libraries dynamically, so your resulting binary will need to know where they are (assuming they're not in your system library path somewhere).
+
+Problems that I know about:
+
+1. Depending on which mining pool you use, you might get a Segmentation fault - abort (6).  I don't know what causes this but some pools are fine and some are not.
