@@ -6,7 +6,7 @@
 
 #include <string.h>
 #include <stdio.h>
-#include <malloc.h>
+#include <malloc/malloc.h>
 
 #include "sha3.h"
 

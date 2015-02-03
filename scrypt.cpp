@@ -44,7 +44,7 @@ using namespace Concurrency;
 #include <string.h>
 
 #include <emmintrin.h>
-#include <malloc.h>
+#include <malloc/malloc.h>
 #include <new>
 
 // A thin wrapper around the builtin __m128i type

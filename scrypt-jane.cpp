@@ -22,7 +22,7 @@
 #define scrypt_maxp 25  /* (1 << 25) = ~33 million */
 
 #include <stdio.h>
-#include <malloc.h>
+#include <malloc/malloc.h>
 
 // ---------------------------- BEGIN keccak functions ------------------------------------
 

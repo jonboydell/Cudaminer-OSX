@@ -146,12 +146,12 @@ if test -n "$with_cuda"
 then
    CUDA_CFLAGS="-I$with_cuda/include"
    CUDA_LIBS="-lcudart"
-   CUDA_LDFLAGS="-L$with_cuda/lib$SUFFIX"
+   CUDA_LDFLAGS="-L$with_cuda/lib"
    NVCC="$with_cuda/bin/nvcc"
 else
    CUDA_CFLAGS="-I/usr/local/cuda/include"
    CUDA_LIBS="-lcudart"
-   CUDA_LDFLAGS="-L/usr/local/cuda/lib$SUFFIX"
+   CUDA_LDFLAGS="-L/usr/local/cuda/lib"
    NVCC="nvcc"
 fi
 AC_SUBST(CUDA_CFLAGS)

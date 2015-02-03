@@ -38,7 +38,7 @@ typedef int ssize_t;
 # elif defined _AIX
 #  define alloca __alloca
 # elif defined _MSC_VER
-#  include <malloc.h>
+#  include <malloc/malloc.h>
 #  define alloca _alloca
 # elif !defined HAVE_ALLOCA
 #  ifdef  __cplusplus

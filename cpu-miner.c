@@ -45,11 +45,6 @@
 #pragma comment(lib, "winmm.lib")
 #endif
 
-#if 1 || defined(USE_WRAPNVML)
-#define USE_WRAPNVML 1
-#include "wrapnvml.h"
-#endif
-
 bool abort_flag = false; // CB
 bool autotune = true;
 int device_map[MAX_DEVICES];
