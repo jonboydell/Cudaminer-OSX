@@ -20,7 +20,7 @@ make -j 16
 
 Dependencies:
 
-1. NVIDIA CUDA libraries, version 5.5 - I tried it with 6.0 but it didn't seem to make any odds to the performance
+1. NVIDIA CUDA libraries, version 5.5 - For some reason I get 70+ khash/s with my NVIDIA GT 750M with 5.5 but only 40+ khash/s with 6.0
 2. OpenSSL 
 3. CURL with SSL - I built it from scratch, along with OpenSSL using my GCC install
 4. Autoconf, automake, m4
